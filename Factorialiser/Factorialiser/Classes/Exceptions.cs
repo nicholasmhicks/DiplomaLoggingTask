@@ -14,7 +14,7 @@ namespace Factorialiser.Classes
     {
         // add a constructor such that the DEFAULT 
         // message for this exception is (if for example 1.23 is entered):
-        // "NotIntegerExcpetion: 1.23"
+        // "NotIntegerException: 1.23"
 
         public NotIntegerException(string input) : base()
         { }
@@ -64,6 +64,4 @@ namespace Factorialiser.Classes
         public NumberTooHighException(int num) : base()
         {}
    }
-
-
 }
