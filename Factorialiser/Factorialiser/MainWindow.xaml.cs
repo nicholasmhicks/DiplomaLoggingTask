@@ -21,9 +21,16 @@ namespace Factorialiser
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void buttonCalculate_Click(object sender, RoutedEventArgs e)
