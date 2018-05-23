@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
 
 namespace Factorialiser.Classes
 {
+
     /// <summary>
     /// This should be thrown when the text entered into textboxInput
     /// is not able to be parsed to an integer.
     /// </summary>
-    public class NotIntegerException:Exception
+    public class NotIntegerException : Exception
     {
         // add a constructor such that the DEFAULT 
         // message for this exception is (if for example 1.23 is entered):
         // "NotIntegerException: 1.23"
 
-        public NotIntegerException(string input) : base()
+        public NotIntegerException(string input) : base("NotIntegerException: " + input)
         { }
     }
 
@@ -30,7 +32,7 @@ namespace Factorialiser.Classes
         // message for this exception is:
 
         // "NullValueException: No Value Entered"
-        public NullValueException() : base()
+        public NullValueException() : base("NullValueException: No Value Entered")
         { }
     }
 
@@ -46,7 +48,7 @@ namespace Factorialiser.Classes
         // message for this exception is (if for example -6 is entered):
 
         // "NumberTooLowException: -6 "
-        public NumberTooLowException(int num) : base()
+        public NumberTooLowException(int num) : base("NumberTooLowException: " + num)
         {}
     }
 
@@ -61,7 +63,7 @@ namespace Factorialiser.Classes
 
         // "NumberTooHighException: 36 "
 
-        public NumberTooHighException(int num) : base()
+        public NumberTooHighException(int num) : base("NumberTooHighException: " + num)
         {}
    }
 }
