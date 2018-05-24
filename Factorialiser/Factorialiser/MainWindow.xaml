@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Factorialiser"
-        mc:Ignorable="d"
-        Title="Factorialiser " Height="245.945" Width="248.118" ResizeMode="NoResize">
+        mc:Ignorable=""
+        Title="Factorialiser " Height="245.945" Width="248.118" ResizeMode="NoResize" Loaded="OnLoad" Closed="MainWindow_Closed" >
     <Grid>
         <Label x:Name="labelHeaderInput" Content="Enter Number To Calculate its Factorial" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="214"/>
         <TextBox x:Name="textBoxInput" HorizontalAlignment="Left" Height="33" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" FontSize="16" TextAlignment="Center"/>

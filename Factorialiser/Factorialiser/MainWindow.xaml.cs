@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Factorialiser.Classes;
+using NLog;
 
 namespace Factorialiser
 {
@@ -28,9 +29,14 @@ namespace Factorialiser
             InitializeComponent();
         }
 
-        public void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        public void OnLoad(object sender, RoutedEventArgs e)
         {
+            _logger.Trace("Main Window Loaded");
+        }
 
+        public void MainWindow_Closed(object sender, EventArgs e)
+        {
+            _logger.Trace("Main Window Closed");
         }
 
         private void buttonCalculate_Click(object sender, RoutedEventArgs e)
@@ -41,25 +47,32 @@ namespace Factorialiser
                 // if this is the case then throw a NullValueException
 
                 //declare a variable here called input or datatype int
+                if (String.IsNullOrWhiteSpace(textBoxInput.Text)) throw new NullValueException();
 
+                int input = 0;
                 try
                 {
                     // try and parse the text input into textboxInput into an integer and assign it to input
                     // log a Debug level log event here with the message "MainForm.buttonCalculate_Click: input successfully parsed"
+                    input = Int32.Parse(textBoxInput.Text);
+                    _logger.Debug("input successfully parsed");
                 }
                 catch
                 {
                     // log a Debug level log event here with the message "MainForm.buttonCalculate_Click: input parse failed"
                     // throw a NotIntegerException 
+                    _logger.Debug("input parse failed");
                 }
 
 
                 // pass the input to the Calculator.Factorial method and store the retuen value in a variable
                 // log a Debug level log event here with the message "MainForm.buttonCalculate_Click: Calculate.Factorial suceeded"
-
+                var value = Calculator.Factorial(input);
+                _logger.Debug("Calculate.Factorial succeeded");
                 // change the text of labelOutput to reflect
                 // log a Debug level log event here with the message "MainForm.buttonCalculate_Click: labelOutput successfully updated"
-
+                labelOutput.Content = value;
+                _logger.Debug("labelOutput successfully updated");
 
             }
             catch (NullValueException)
