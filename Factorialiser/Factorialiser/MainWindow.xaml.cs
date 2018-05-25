@@ -55,24 +55,24 @@ namespace Factorialiser
                     // try and parse the text input into textboxInput into an integer and assign it to input
                     // log a Debug level log event here with the message "MainForm.buttonCalculate_Click: input successfully parsed"
                     input = Int32.Parse(textBoxInput.Text);
-                    _logger.Debug("input successfully parsed");
+                    _logger.Debug("MainForm.buttonCalculate_Click: input successfully parsed");
                 }
                 catch
                 {
                     // log a Debug level log event here with the message "MainForm.buttonCalculate_Click: input parse failed"
                     // throw a NotIntegerException 
-                    _logger.Debug("input parse failed");
+                    _logger.Debug("MainForm.buttonCalculate_Click: input parse failed");
                 }
 
 
                 // pass the input to the Calculator.Factorial method and store the retuen value in a variable
                 // log a Debug level log event here with the message "MainForm.buttonCalculate_Click: Calculate.Factorial suceeded"
                 var value = Calculator.Factorial(input);
-                _logger.Debug("Calculate.Factorial succeeded");
+                _logger.Debug("MainForm.buttonCalculate_Click: Calculate.Factorial succeeded");
                 // change the text of labelOutput to reflect
                 // log a Debug level log event here with the message "MainForm.buttonCalculate_Click: labelOutput successfully updated"
                 labelOutput.Content = value;
-                _logger.Debug("labelOutput successfully updated");
+                _logger.Debug("MainForm.buttonCalculate_Click: labelOutput successfully updated");
 
             }
             catch (NullValueException)
@@ -81,7 +81,9 @@ namespace Factorialiser
                 // present a message box saying ("Nothing Entered - Please enter an integer")
                 // log the event as an Error Level log 
                 // with the message "MainForm.buttonCalculate_Click: NullValueException message displayed"
-
+                labelOutput.Content = null;
+                textBoxInput.Text = null;
+                _logger.Error("MainForm.buttonCalculate_Click: NullValueException message displayed");
             }
 
             // ###########
@@ -97,6 +99,10 @@ namespace Factorialiser
                 // present a message box saying ("Unknown Error")
                 // log the event as an Fatal Level log 
                 // with the message ("MainForm.buttonCalculate_Click: Unknown Error : " + ex.message)
+
+                labelOutput.Content = null;
+                textBoxInput.Text = null;
+                _logger.Fatal("MainForm.buttonCalculate_Click: Unknown Error : " + ex.Message);
             }
 
 
